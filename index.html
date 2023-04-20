@@ -35,5 +35,46 @@
         </div>
     </div>
    </div> 
+   <script>
+    const apikey ="311c5e8b81fa12c0a80eac62347b8ed9";
+    const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+    const searchBox= document.querySelector(".search input");
+    const searchBtn= document.querySelector(".search button");
+    const weatherIcon=document.querySelector(".weather-icon");
+    async function checkWeather(city){
+        const response = await fetch(apiUrl + city + `&appid=${apikey}`);
+        var data = await response.json();
+        
+
+        document.querySelector(".city").innerHTML = data.name;
+        document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°c";
+        document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+        document.querySelector(".wind").innerHTML = data.wind.speed + " km/hr";
+
+        if(data.weather[0].main =="Clouds"){
+            weatherIcon.src= "New folder/images/clouds.png";
+        }
+        else if(data.weather[0].main =="Clear"){
+            weatherIcon.src= "New folder/images/clear.png";
+        }
+        else if(data.weather[0].main =="Rain"){
+            weatherIcon.src= "New folder/images/rain.png";
+        }
+        else if(data.weather[0].main =="Drizzle"){
+            weatherIcon.src= "New folder/images/drizzle.png";
+        }
+        else if(data.weather[0].main =="Mist"){
+            weatherIcon.src= "New folder/images/mist.png";
+        }
+
+        document.querySelector(".weather").style.display = "block";
+
+    }
+    searchBtn.addEventListener("click",()=>{
+        checkWeather(searchBox.value);
+    })
+
+    checkWeather();
+   </script>
 </body>
 </html>
