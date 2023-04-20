@@ -1,4 +1,5 @@
-# HowHot
+# HowHot![Screenshot (120)](https://user-images.githubusercontent.com/86738355/233403263-355b9023-f31d-440e-8f58-0089907788af.png)
+
  Weather App
 Description
 This is a simple weather app that allows users to search for the weather information of a particular location. The app fetches weather data from an API and displays the temperature, humidity, wind speed, and weather condition for the searched location.
